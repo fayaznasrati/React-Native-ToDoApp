@@ -11,7 +11,7 @@ const TodoItem = ({ text, onRemove }: TodoItemProps) => {
   return (
     <View style={styles.toDoItem}>
       <Text style={styles.toDoItemText}>{text}</Text>
-      <TouchableOpacity onPress={onRemove}>
+      <TouchableOpacity onPress={onRemove}  >
         <Text style={styles.removeButton}>X</Text>
       </TouchableOpacity>
     </View>
@@ -36,6 +36,7 @@ const createStyles = (mode: string) =>
       shadowOffset: { width: 0, height: 1 },
       shadowOpacity: 0.3,
       shadowRadius: 1,
+     
     },
     toDoItemText: {
       color: mode === "dark" ? "#fff" : "#000",
