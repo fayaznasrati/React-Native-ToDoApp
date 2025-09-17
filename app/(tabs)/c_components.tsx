@@ -1,14 +1,29 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Modal, Button } from "react-native";
+import { useState } from "react";
+import ModalMessage from "@/components/modal_message";
 
 const CustomeComponent = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const modalVisibilityHandler = () => {
+    setModalVisible(!modalVisible);
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.headerTitle}>my Custom Components</Text>
 
-        <View>
-          <Text>This is a custom component</Text>
-        </View>
-      
+      <Button
+        title="Open Modal"
+        onPress={() => {
+          modalVisibilityHandler();
+        }}
+      />
+      <ModalMessage
+        message="This is a custom modal message!"
+        visibleState={modalVisible}
+        onClose={modalVisibilityHandler}
+      />
     </View>
   );
 };
@@ -31,5 +46,11 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     color: "#05a041",
     marginBottom: 12,
+  },
+  ModalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    margin: 50,
   },
 });
